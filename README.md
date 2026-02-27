@@ -16,6 +16,7 @@
 |---|---|---|
 | PHP | 8.3 | 8.0+ |
 | Composer | 2.8 | 2.0+ |
+| Node.js | 24.5 | 18.x+ |
 | SQLite | bundled (`database/database.sqlite`) | 3.x |
 
 > No external database server is required. The project uses SQLite out of the box.
@@ -32,21 +33,29 @@ cd <project-folder>
 # 2. Install PHP dependencies
 composer install
 
-# 3. Copy environment file and generate application key
+# 3. Install Node.js dependencies
+npm install
+
+# 4. Copy environment file and generate application key
 cp .env.example .env
 php artisan key:generate
 
-# 4. Run migrations and seed default data
+# 5. Run migrations and seed default data
 php artisan migrate --seed
 
-# 5. Link storage for uploaded assets
+# 6. Link storage for uploaded assets
 php artisan storage:link
 
-# 6. Start the development server
+# 7. Build frontend assets
+npm run build
+
+# 8. Start the development server
 php artisan serve
 ```
 
 The application will be available at `http://localhost:8000`.
+
+> **For active development**, run `npm run dev` in a separate terminal instead of `npm run build` to get hot module replacement.
 
 ---
 
